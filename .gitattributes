@@ -1,0 +1,26 @@
+# Единые переводы строк (LF) для macOS и Windows
+* text=auto eol=lf
+
+# Windows-скрипты должны оставаться с CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Unix-скрипт gradlew — всегда LF
+gradlew text eol=lf
+
+# Бинарные файлы
+*.jar binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.ttf binary
+*.otf binary
+*.jks binary
+*.keystore binary
+*.apk binary
+*.aab binary
+*.pdf binary
+*.docx binary

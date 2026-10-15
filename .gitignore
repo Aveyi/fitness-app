@@ -1,0 +1,57 @@
+# ---- Gradle ----
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# ---- Локальные настройки (у каждого свои) ----
+local.properties
+*.local.properties
+
+# ---- Android Studio / IntelliJ ----
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+captures/
+.externalNativeBuild/
+.cxx/
+.navigation/
+
+# ---- Сборки и артефакты ----
+*.apk
+*.aab
+*.ap_
+*.dex
+release/
+output-metadata.json
+
+# ---- Ключи подписи и секреты: НЕ КОММИТИТЬ ----
+*.jks
+*.keystore
+keystore.properties
+secrets.properties
+google-services.json
+
+# ---- Логи ----
+*.log
+
+# ---- macOS ----
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# ---- Windows ----
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ---- Прочее ----
+*.swp
+*~
+.vscode/
+.kotlin/
