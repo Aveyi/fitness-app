@@ -17,6 +17,7 @@ val GridLine = Color(0xFFEEF0F3)           // сетка графика, раз�
 
 val TextPrimary = Color(0xFF181A1F)
 val TextSecondary = Color(0xFF5A606B)
+val FieldLabel = Color(0xFF3A3F48)         // подписи над полями ввода и чипами
 
 val Success = Color(0xFF1E7A45)            // выполненный подход
 val SuccessContainer = Color(0xFFE8F5EE)   // фон строки выполненного подхода

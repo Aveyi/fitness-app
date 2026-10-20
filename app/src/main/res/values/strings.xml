@@ -18,6 +18,41 @@
   <string name="title_profile">Профиль</string>
 
   <string name="action_back">Назад</string>
+  <string name="action_show_password">Показать пароль</string>
+  <string name="action_hide_password">Скрыть пароль</string>
+  <string name="state_loading">Загрузка</string>
+
+  <!-- Вход и регистрация -->
+  <string name="login_subtitle">Войдите, чтобы продолжить вести журнал тренировок</string>
+  <string name="login_button">Войти</string>
+  <string name="login_no_account">Нет аккаунта?</string>
+  <string name="login_open_register">Зарегистрироваться</string>
+  <string name="register_button">Создать аккаунт</string>
+  <string name="field_name">Имя</string>
+  <string name="field_email">Email</string>
+  <string name="field_password">Пароль</string>
+  <string name="field_password_repeat">Повтор пароля</string>
+  <string name="field_height">Рост, см</string>
+  <string name="field_weight">Вес, кг</string>
+  <string name="field_goal">Цель тренировок</string>
+
+  <string name="goal_strength">Сила</string>
+  <string name="goal_mass">Масса</string>
+  <string name="goal_weight_loss">Похудение</string>
+  <string name="goal_maintenance">Поддержание формы</string>
+
+  <!-- Ошибки полей -->
+  <string name="error_required">Заполните поле</string>
+  <string name="error_email_invalid">Проверьте email, например ivan@mail.ru</string>
+  <string name="error_password_too_short">Пароль должен быть не короче 8 символов</string>
+  <string name="error_password_letter_digit">Добавьте хотя бы одну букву и одну цифру</string>
+  <string name="error_passwords_do_not_match">Пароли не совпадают</string>
+  <string name="error_name_length">Имя — от 2 до 40 символов</string>
+  <string name="error_not_a_number">Введите число</string>
+  <string name="error_height_range">Рост — от 100 до 250 см</string>
+  <string name="error_weight_range">Вес — от 30 до 300 кг</string>
+  <string name="error_email_taken">Этот email уже зарегистрирован</string>
+  <string name="error_invalid_credentials">Неверный email или пароль</string>
 
   <!-- PasswordStrengthIndicator -->
   <string name="password_strength_weak">Слабый</string>
@@ -32,10 +67,6 @@
 
   <!-- Временные кнопки заглушек: удаляются вместе с заглушками -->
   <string name="stub_note">Заглушка экрана</string>
-  <string name="stub_login">Войти</string>
-  <string name="stub_open_register">Создать аккаунт</string>
-  <string name="stub_register">Зарегистрироваться</string>
-  <string name="stub_open_login">Уже есть аккаунт</string>
   <string name="stub_start_workout">Начать тренировку</string>
   <string name="stub_open_profile">Профиль</string>
   <string name="stub_open_stats">Статистика</string>

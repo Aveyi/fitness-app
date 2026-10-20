@@ -21,8 +21,8 @@ import ru.pacani.fitnessdiary.ui.navigation.topLevelTab
 
 @Composable
 fun FitnessDiaryApp(
-    // Пока сессии нет, всегда стартуем со входа. Потом сюда придёт граф по currentUserId.
-    startDestination: Any = AuthGraph,
+    /** [AuthGraph] или MainGraph — выбирает MainViewModel по сессии. */
+    startDestination: Any,
 ) {
     val navController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
