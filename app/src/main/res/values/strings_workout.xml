@@ -13,4 +13,36 @@
   <string name="set_row_state_done">Отмечен</string>
   <string name="set_row_state_not_done">Не отмечен</string>
   <string name="set_row_delete">Удалить подход</string>
+
+  <!-- Длительность -->
+  <string name="duration_minutes">%1$d мин</string>
+  <string name="duration_hours_minutes">%1$d ч %2$02d мин</string>
+
+  <!-- Экран «Тренировка» -->
+  <string name="workout_in_progress">Идёт %1$s</string>
+  <plurals name="workout_sets_progress">
+    <item quantity="one">%1$d из %2$d подхода</item>
+    <item quantity="few">%1$d из %2$d подходов</item>
+    <item quantity="many">%1$d из %2$d подходов</item>
+    <item quantity="other">%1$d из %2$d подхода</item>
+  </plurals>
+  <string name="workout_rename">Переименовать</string>
+  <string name="workout_rename_title">Название тренировки</string>
+  <string name="workout_rest">Отдых</string>
+  <string name="workout_rest_add">+30 с</string>
+  <string name="workout_rest_skip">Пропустить</string>
+  <string name="workout_add_set">Подход</string>
+  <string name="workout_add_exercise">Добавить упражнение</string>
+  <string name="workout_empty">Добавьте первое упражнение, чтобы записывать подходы</string>
+  <string name="workout_remove_exercise">Удалить упражнение</string>
+  <string name="workout_remove_exercise_title">Удалить «%1$s»?</string>
+  <string name="workout_remove_exercise_text">Все подходы этого упражнения тоже удалятся.</string>
+  <string name="workout_finish">Завершить тренировку</string>
+  <string name="workout_done">Готово</string>
+  <string name="workout_finish_title">Завершить тренировку?</string>
+  <string name="workout_finish_unchecked">Не отмечено подходов: %1$d. Они сохранятся как невыполненные.</string>
+  <string name="workout_note">Заметка (необязательно)</string>
+  <string name="workout_not_found">Тренировка не найдена</string>
+  <string name="action_save">Сохранить</string>
+  <string name="action_delete">Удалить</string>
 </resources>
