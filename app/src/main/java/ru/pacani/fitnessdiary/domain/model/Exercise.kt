@@ -5,8 +5,10 @@ data class Exercise(
     /** id в wger; null у собственных упражнений. */
     val remoteId: Int?,
     val name: String,
+    /** Техника выполнения: строки через \n, пункты списка начинаются с «• ». */
     val description: String?,
-    val category: String,
+    val category: ExerciseCategory,
+    /** Оборудование на русском через запятую, например «Штанга, скамья». */
     val equipment: String?,
     val isCustom: Boolean,
 )
