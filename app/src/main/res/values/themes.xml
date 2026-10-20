@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- Основная тема окна. Цвета экранов задаёт Compose (ui/theme) -->
+  <style name="Theme.FitnessDiary" parent="android:Theme.Material.Light.NoActionBar">
+    <item name="android:windowBackground">@color/background</item>
+  </style>
+
+  <!-- Тема запуска: системный splash, после него переключаемся на основную тему -->
+  <style name="Theme.FitnessDiary.Starting" parent="Theme.SplashScreen">
+    <item name="windowSplashScreenBackground">@color/primary</item>
+    <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+    <item name="postSplashScreenTheme">@style/Theme.FitnessDiary</item>
+  </style>
+
+</resources>
