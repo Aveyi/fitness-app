@@ -13,6 +13,7 @@ val Background = Color(0xFFF5F6F8)
 val Surface = Color(0xFFFFFFFF)
 val Outline = Color(0xFFC9CED6)            // обводка полей и чипов
 val OutlineVariant = Color(0xFFE2E5EA)     // разделители, обводка карточек
+val GridLine = Color(0xFFEEF0F3)           // сетка графика, разделители строк внутри карточки
 
 val TextPrimary = Color(0xFF181A1F)
 val TextSecondary = Color(0xFF5A606B)

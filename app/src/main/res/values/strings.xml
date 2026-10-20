@@ -19,6 +19,17 @@
 
   <string name="action_back">Назад</string>
 
+  <!-- PasswordStrengthIndicator -->
+  <string name="password_strength_weak">Слабый</string>
+  <string name="password_strength_medium">Средний</string>
+  <string name="password_strength_strong">Надёжный</string>
+  <string name="password_strength_cd_weak">Надёжность пароля: низкая</string>
+  <string name="password_strength_cd_medium">Надёжность пароля: средняя</string>
+  <string name="password_strength_cd_strong">Надёжность пароля: высокая</string>
+
+  <!-- ProgressChart -->
+  <string name="chart_empty">Пока нет завершённых тренировок</string>
+
   <!-- Временные кнопки заглушек: удаляются вместе с заглушками -->
   <string name="stub_note">Заглушка экрана</string>
   <string name="stub_login">Войти</string>
