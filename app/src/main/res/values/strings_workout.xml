@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Строки экранов тренировки (участник 2). Отдельный файл, чтобы не конфликтовать со strings.xml. -->
+<resources>
+  <string name="set_row_header_number">№</string>
+  <string name="set_row_header_done">Готово</string>
+  <string name="set_row_weight">Вес, кг</string>
+  <string name="set_row_reps">Повторы</string>
+  <string name="set_row_weight_decrease">Уменьшить вес</string>
+  <string name="set_row_weight_increase">Увеличить вес</string>
+  <string name="set_row_reps_decrease">Уменьшить повторения</string>
+  <string name="set_row_reps_increase">Увеличить повторения</string>
+  <string name="set_row_done">Подход выполнен</string>
+  <string name="set_row_state_done">Отмечен</string>
+  <string name="set_row_state_not_done">Не отмечен</string>
+  <string name="set_row_delete">Удалить подход</string>
+</resources>
