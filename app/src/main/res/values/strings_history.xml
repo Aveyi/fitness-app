@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Строки Истории и Деталей тренировки (участник 2). -->
+<resources>
+  <string name="history_this_week">Эта неделя</string>
+  <string name="history_last_week">Прошлая неделя</string>
+  <string name="history_empty_title">Пока нет тренировок</string>
+  <string name="history_empty_text">Завершённые тренировки появятся здесь</string>
+  <string name="history_deleted">Тренировка удалена</string>
+  <string name="history_undo">Отменить</string>
+
+  <plurals name="exercises_count">
+    <item quantity="one">%1$d упражнение</item>
+    <item quantity="few">%1$d упражнения</item>
+    <item quantity="many">%1$d упражнений</item>
+    <item quantity="other">%1$d упражнения</item>
+  </plurals>
+
+  <!-- Подписи под числами в карточках деталей -->
+  <string name="details_duration">длительность</string>
+  <plurals name="details_exercises_label">
+    <item quantity="one">упражнение</item>
+    <item quantity="few">упражнения</item>
+    <item quantity="many">упражнений</item>
+    <item quantity="other">упражнения</item>
+  </plurals>
+  <plurals name="details_sets_label">
+    <item quantity="one">подход</item>
+    <item quantity="few">подхода</item>
+    <item quantity="many">подходов</item>
+    <item quantity="other">подхода</item>
+  </plurals>
+  <string name="details_record">Рекорд %1$s кг</string>
+  <string name="details_set_chip">%1$s × %2$d</string>
+  <string name="details_set_chip_bodyweight">%1$d повт.</string>
+  <string name="details_no_completed_sets">Нет выполненных подходов</string>
+  <string name="details_note">Заметка</string>
+  <string name="details_edit">Редактировать</string>
+  <string name="details_delete">Удалить тренировку</string>
+  <string name="details_delete_title">Удалить тренировку?</string>
+  <string name="details_delete_text">Тренировка и все её подходы будут удалены без возможности восстановления.</string>
+</resources>
