@@ -39,9 +39,17 @@ class FakeAuthRepository : AuthRepository {
         logoutCalls++
     }
 
-    override fun observeCurrentUser(): Flow<User?> = MutableStateFlow(null)
+    /** Текущий пользователь для экранов, которые его показывают. */
+    val currentUser = MutableStateFlow<User?>(null)
+
+    override fun observeCurrentUser(): Flow<User?> = currentUser
 
     override suspend fun restoreSession(): Boolean = false
 
-    override suspend fun updateProfile(heightCm: Int?, weightKg: Double?, goal: Goal) = Unit
+    val profileUpdates = mutableListOf<Triple<Int?, Double?, Goal>>()
+
+    override suspend fun updateProfile(heightCm: Int?, weightKg: Double?, goal: Goal) {
+        profileUpdates += Triple(heightCm, weightKg, goal)
+        currentUser.value = currentUser.value?.copy(heightCm = heightCm, weightKg = weightKg, goal = goal)
+    }
 }

@@ -9,16 +9,15 @@ import ru.pacani.fitnessdiary.data.repository.AuthRepository
 import ru.pacani.fitnessdiary.data.repository.DefaultExerciseRepository
 import ru.pacani.fitnessdiary.data.repository.ExerciseRepository
 import ru.pacani.fitnessdiary.data.repository.RoomAuthRepository
+import ru.pacani.fitnessdiary.data.repository.RoomStatsRepository
 import ru.pacani.fitnessdiary.data.repository.RoomWorkoutRepository
+import ru.pacani.fitnessdiary.data.repository.StatsRepository
 import ru.pacani.fitnessdiary.data.repository.WorkoutRepository
 import ru.pacani.fitnessdiary.data.session.SessionRepository
 import ru.pacani.fitnessdiary.data.session.sessionDataStore
 
 /**
  * Ручной DI: все зависимости приложения создаются здесь (раздел 4 context.md).
- *
- * Репозитории добавляются по мере появления:
- * - `statsRepository` — участник 1.
  *
  * ViewModel получает их через `(this[APPLICATION_KEY] as FitnessApp).container`.
  */
@@ -27,6 +26,7 @@ interface AppContainer {
     val authRepository: AuthRepository
     val workoutRepository: WorkoutRepository
     val exerciseRepository: ExerciseRepository
+    val statsRepository: StatsRepository
 }
 
 class DefaultAppContainer(context: Context) : AppContainer {
@@ -53,4 +53,6 @@ class DefaultAppContainer(context: Context) : AppContainer {
     override val exerciseRepository: ExerciseRepository by lazy {
         DefaultExerciseRepository(wgerApi, database.exerciseDao(), transactionRunner)
     }
+
+    override val statsRepository: StatsRepository by lazy { RoomStatsRepository(database.statsDao()) }
 }

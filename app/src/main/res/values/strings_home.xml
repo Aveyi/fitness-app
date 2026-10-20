@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Строки Главной, Профиля и Статистики (участник 1). -->
+<resources>
+  <string-array name="months_short">
+    <item>янв</item>
+    <item>фев</item>
+    <item>мар</item>
+    <item>апр</item>
+    <item>мая</item>
+    <item>июн</item>
+    <item>июл</item>
+    <item>авг</item>
+    <item>сен</item>
+    <item>окт</item>
+    <item>ноя</item>
+    <item>дек</item>
+  </string-array>
+
+  <!-- Главная -->
+  <string name="home_greeting">Привет, %1$s!</string>
+  <string name="home_ready_title">Готов к тренировке?</string>
+  <string name="home_first_workout">Запишите первую тренировку</string>
+  <string name="home_last_today">Последняя была сегодня: %1$s</string>
+  <string name="home_last_yesterday">Последняя была вчера: %1$s</string>
+  <plurals name="home_last_days_ago">
+    <item quantity="one">Последняя была %1$d день назад: %2$s</item>
+    <item quantity="few">Последняя была %1$d дня назад: %2$s</item>
+    <item quantity="many">Последняя была %1$d дней назад: %2$s</item>
+    <item quantity="other">Последняя была %1$d дня назад: %2$s</item>
+  </plurals>
+  <string name="home_active_title">Тренировка идёт</string>
+  <string name="home_active_subtitle">%1$s · начата в %2$s</string>
+  <string name="home_start">Начать тренировку</string>
+  <string name="home_continue">Продолжить</string>
+  <string name="home_default_workout_title">Тренировка</string>
+  <string name="home_this_week">Эта неделя</string>
+  <string name="home_time_in_gym">в зале</string>
+  <string name="home_chart_title">Упражнений по неделям</string>
+  <string name="home_chart_description">Упражнений за неделю за последние %1$d недель, на текущей неделе %2$d</string>
+  <string name="home_last_workout">Последняя тренировка</string>
+  <string name="home_workout_summary">%1$s · %2$s</string>
+
+  <plurals name="stat_workouts_label">
+    <item quantity="one">тренировка</item>
+    <item quantity="few">тренировки</item>
+    <item quantity="many">тренировок</item>
+    <item quantity="other">тренировки</item>
+  </plurals>
+  <plurals name="stat_exercises_label">
+    <item quantity="one">упражнение</item>
+    <item quantity="few">упражнения</item>
+    <item quantity="many">упражнений</item>
+    <item quantity="other">упражнения</item>
+  </plurals>
+  <plurals name="exercise_count">
+    <item quantity="one">%1$d упражнение</item>
+    <item quantity="few">%1$d упражнения</item>
+    <item quantity="many">%1$d упражнений</item>
+    <item quantity="other">%1$d упражнения</item>
+  </plurals>
+
+  <!-- Профиль -->
+  <string name="profile_since">С нами с %1$s · %2$s</string>
+  <plurals name="workout_count">
+    <item quantity="one">%1$d тренировка</item>
+    <item quantity="few">%1$d тренировки</item>
+    <item quantity="many">%1$d тренировок</item>
+    <item quantity="other">%1$d тренировки</item>
+  </plurals>
+  <string name="profile_parameters">Параметры</string>
+  <string name="profile_saved">Изменения сохранены</string>
+  <string name="profile_logout">Выйти из аккаунта</string>
+</resources>

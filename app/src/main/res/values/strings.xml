@@ -67,17 +67,7 @@
 
   <!-- Временные кнопки заглушек: удаляются вместе с заглушками -->
   <string name="stub_note">Заглушка экрана</string>
-  <string name="stub_start_workout">Начать тренировку</string>
-  <string name="stub_open_profile">Профиль</string>
-  <string name="stub_open_stats">Статистика</string>
-  <string name="stub_open_last_workout">Последняя тренировка</string>
-  <string name="stub_add_exercise">Добавить упражнение</string>
-  <string name="stub_finish_workout">Завершить тренировку</string>
-  <string name="stub_picked_exercise">Выбрано упражнение #%1$d</string>
   <string name="stub_open_workout">Открыть тренировку #1</string>
   <string name="stub_edit_workout">Редактировать</string>
-  <string name="stub_open_exercise">Открыть упражнение #1</string>
-  <string name="stub_pick_exercise">Выбрать упражнение #1</string>
-  <string name="stub_logout">Выйти из аккаунта</string>
   <string name="stub_id">id = %1$d</string>
 </resources>

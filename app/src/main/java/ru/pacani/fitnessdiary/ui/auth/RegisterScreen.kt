@@ -2,8 +2,6 @@ package ru.pacani.fitnessdiary.ui.auth
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.consumeWindowInsets
@@ -11,21 +9,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
-import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -35,28 +27,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.role
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import ru.pacani.fitnessdiary.R
 import ru.pacani.fitnessdiary.domain.model.Goal
+import ru.pacani.fitnessdiary.ui.components.GoalPicker
 import ru.pacani.fitnessdiary.ui.components.LabeledTextField
 import ru.pacani.fitnessdiary.ui.components.PasswordStrengthIndicator
 import ru.pacani.fitnessdiary.ui.components.PasswordTextField
 import ru.pacani.fitnessdiary.ui.components.PrimaryButton
-import ru.pacani.fitnessdiary.ui.theme.ChipShape
-import ru.pacani.fitnessdiary.ui.theme.FieldLabel
 import ru.pacani.fitnessdiary.ui.theme.FitnessDiaryTheme
-import ru.pacani.fitnessdiary.ui.theme.Outline
 
 @Composable
 fun RegisterScreen(
@@ -211,57 +196,6 @@ private fun RegisterContent(state: RegisterUiState, actions: RegisterActions) {
                 onClick = submit,
                 isLoading = state.isLoading,
             )
-        }
-    }
-}
-
-@OptIn(ExperimentalLayoutApi::class)
-@Composable
-private fun GoalPicker(selected: Goal, onSelect: (Goal) -> Unit, enabled: Boolean) {
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Text(
-            text = stringResource(R.string.field_goal),
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Medium,
-            color = FieldLabel,
-        )
-        FlowRow(
-            modifier = Modifier.selectableGroup(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            Goal.entries.forEach { goal ->
-                val isSelected = goal == selected
-                FilterChip(
-                    selected = isSelected,
-                    onClick = { onSelect(goal) },
-                    enabled = enabled,
-                    label = { Text(stringResource(goal.labelRes()), fontSize = 14.sp, fontWeight = FontWeight.Medium) },
-                    leadingIcon = if (isSelected) {
-                        { Icon(Icons.Outlined.Check, contentDescription = null, modifier = Modifier.size(16.dp)) }
-                    } else {
-                        null
-                    },
-                    shape = ChipShape,
-                    border = FilterChipDefaults.filterChipBorder(
-                        enabled = enabled,
-                        selected = isSelected,
-                        borderColor = Outline,
-                        selectedBorderColor = MaterialTheme.colorScheme.primary,
-                        selectedBorderWidth = 1.dp,
-                    ),
-                    colors = FilterChipDefaults.filterChipColors(
-                        labelColor = FieldLabel,
-                        selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
-                        selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                        selectedLeadingIconColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    ),
-                    // Выбор одного варианта из нескольких: TalkBack озвучит как переключатель
-                    modifier = Modifier
-                        .height(36.dp)
-                        .semantics { role = Role.RadioButton },
-                )
-            }
         }
     }
 }

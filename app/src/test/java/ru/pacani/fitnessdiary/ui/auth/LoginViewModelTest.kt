@@ -1,6 +1,8 @@
 package ru.pacani.fitnessdiary.ui.auth
 
 import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -10,11 +12,13 @@ import org.junit.Rule
 import org.junit.Test
 import ru.pacani.fitnessdiary.R
 import ru.pacani.fitnessdiary.data.repository.LoginResult
+import ru.pacani.fitnessdiary.util.MainDispatcherRule
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class LoginViewModelTest {
 
     @get:Rule
-    val mainDispatcherRule = MainDispatcherRule()
+    val mainDispatcherRule = MainDispatcherRule(UnconfinedTestDispatcher())
 
     private val repository = FakeAuthRepository()
     private val viewModel = LoginViewModel(repository)
