@@ -8,6 +8,7 @@ import ru.pacani.fitnessdiary.data.local.relation.ExerciseWithSets
 import ru.pacani.fitnessdiary.data.local.relation.WorkoutSummaryRow
 import ru.pacani.fitnessdiary.data.local.relation.WorkoutWithExercises
 import ru.pacani.fitnessdiary.domain.model.Exercise
+import ru.pacani.fitnessdiary.domain.model.ExerciseCategory
 import ru.pacani.fitnessdiary.domain.model.Workout
 import ru.pacani.fitnessdiary.domain.model.WorkoutDetails
 import ru.pacani.fitnessdiary.domain.model.WorkoutExercise
@@ -40,7 +41,7 @@ fun ExerciseEntity.toDomain() = Exercise(
     remoteId = remoteId,
     name = name,
     description = description,
-    category = category,
+    category = ExerciseCategory.fromKey(category),
     equipment = equipment,
     isCustom = isCustom,
 )

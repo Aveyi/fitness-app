@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Строки каталога упражнений (участник 2). Отдельный файл, чтобы не конфликтовать со strings.xml. -->
+<resources>
+  <string name="category_all">Все</string>
+  <string name="category_chest">Грудь</string>
+  <string name="category_back">Спина</string>
+  <string name="category_legs">Ноги</string>
+  <string name="category_shoulders">Плечи</string>
+  <string name="category_arms">Руки</string>
+  <string name="category_abs">Пресс</string>
+  <string name="category_cardio">Кардио</string>
+  <string name="category_other">Другое</string>
+
+  <string name="exercises_search_hint">Поиск упражнения</string>
+  <string name="exercises_search_clear">Очистить поиск</string>
+  <string name="exercises_custom_badge">Моё</string>
+  <string name="exercises_add_custom">Своё упражнение</string>
+  <string name="exercises_empty_search">Ничего не найдено</string>
+  <string name="exercises_empty_catalog">Каталог пуст. Потяните вниз, чтобы загрузить упражнения.</string>
+  <string name="exercises_error_no_connection">Нет подключения к интернету</string>
+  <string name="exercises_error_load">Не удалось загрузить каталог упражнений</string>
+  <string name="exercises_error_not_logged_in">Войдите в аккаунт, чтобы добавлять свои упражнения</string>
+  <string name="exercises_custom_added">Упражнение добавлено</string>
+
+  <string name="custom_exercise_title">Своё упражнение</string>
+  <string name="custom_exercise_name">Название</string>
+  <string name="custom_exercise_category">Категория</string>
+  <string name="custom_exercise_add">Добавить</string>
+  <string name="action_cancel">Отмена</string>
+
+  <string name="exercise_details_category">Категория</string>
+  <string name="exercise_details_equipment">Оборудование</string>
+  <string name="exercise_details_no_equipment">Не указано</string>
+  <string name="exercise_details_technique">Техника выполнения</string>
+  <string name="exercise_details_no_description">Описание пока не добавлено.</string>
+  <string name="exercise_details_source_wger">Источник данных: wger.de</string>
+  <string name="exercise_details_source_custom">Своё упражнение</string>
+  <string name="exercise_details_not_found">Упражнение не найдено</string>
+</resources>
