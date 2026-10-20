@@ -5,6 +5,7 @@ import java.time.Duration
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
+import java.time.temporal.ChronoUnit
 import java.time.temporal.TemporalAdjusters
 
 /** Завершённая тренировка в том виде, который нужен статистике. */
@@ -35,6 +36,29 @@ data class WeekCount(
     val weekStart: LocalDate,
     val exerciseCount: Int,
 )
+
+/** Выполненный подход с весом: из таких считаются личные рекорды. */
+data class CompletedSet(
+    val exerciseId: Long,
+    val exerciseName: String,
+    val weightKg: Double,
+    val startedAt: Instant,
+)
+
+/** Лучший вес по упражнению и когда он был поднят впервые. */
+data class PersonalRecord(
+    val exerciseId: Long,
+    val exerciseName: String,
+    val weightKg: Double,
+    val achievedAt: Instant,
+)
+
+/** Период на экране Статистика. [weeks] = null — всё время, с недели первой тренировки. */
+enum class StatsPeriod(val weeks: Int?) {
+    FOUR_WEEKS(4),
+    THREE_MONTHS(13),
+    ALL_TIME(null),
+}
 
 /** Расчёты статистики (раздел 7 context.md). Чистые функции: время и часовой пояс приходят снаружи. */
 object StatsCalculator {
@@ -72,4 +96,39 @@ object StatsCalculator {
 
     /** Начало недели [weekStart] как момент времени: для запроса «тренировки с ...». */
     fun startOf(weekStart: LocalDate, zone: ZoneId): Instant = weekStart.atStartOfDay(zone).toInstant()
+
+    /**
+     * Сколько недель показывать за [period], включая текущую. Для «всего времени» — от недели
+     * первой тренировки [firstWorkoutDate], но не меньше [MIN_ALL_TIME_WEEKS]: иначе у нового
+     * пользователя график из одного столбца на всю ширину.
+     */
+    fun periodWeeks(period: StatsPeriod, currentWeekStart: LocalDate, firstWorkoutDate: LocalDate?): Int {
+        period.weeks?.let { return it }
+        val firstWeek = firstWorkoutDate?.let(::weekStart) ?: return MIN_ALL_TIME_WEEKS
+        val weeks = ChronoUnit.WEEKS.between(firstWeek, currentWeekStart).toInt() + 1
+        return weeks.coerceAtLeast(MIN_ALL_TIME_WEEKS)
+    }
+
+    const val MIN_ALL_TIME_WEEKS = 4
+
+    /**
+     * Лучшая завершённая неделя (текущая не считается, она ещё идёт) — та же, что выделена
+     * на графике. При равенстве — более поздняя. null, если упражнений не было.
+     */
+    fun bestWeek(weeks: List<WeekCount>, currentWeekStart: LocalDate): WeekCount? =
+        weeks.filter { it.weekStart != currentWeekStart && it.exerciseCount > 0 }
+            .maxWithOrNull(compareBy<WeekCount> { it.exerciseCount }.thenBy { it.weekStart })
+
+    /**
+     * Личные рекорды: максимальный вес по каждому упражнению и дата, когда он был поднят
+     * впервые (повтор того же веса рекордом не считается). Новые рекорды — сверху.
+     */
+    fun personalRecords(sets: List<CompletedSet>): List<PersonalRecord> =
+        sets.groupBy { it.exerciseId }
+            .map { (exerciseId, exerciseSets) ->
+                val best = exerciseSets.maxOf { it.weightKg }
+                val first = exerciseSets.filter { it.weightKg == best }.minBy { it.startedAt }
+                PersonalRecord(exerciseId, first.exerciseName, best, first.startedAt)
+            }
+            .sortedByDescending { it.achievedAt }
 }

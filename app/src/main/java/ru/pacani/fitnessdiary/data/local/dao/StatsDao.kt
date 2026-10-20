@@ -3,6 +3,7 @@ package ru.pacani.fitnessdiary.data.local.dao
 import androidx.room.Dao
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
+import ru.pacani.fitnessdiary.data.local.relation.CompletedSetRow
 import ru.pacani.fitnessdiary.data.local.relation.WorkoutStatRow
 
 /**
@@ -27,4 +28,20 @@ interface StatsDao {
         """,
     )
     fun observeFinishedWorkoutStats(userId: Long, from: Long): Flow<List<WorkoutStatRow>>
+
+    /**
+     * Выполненные подходы с весом больше нуля во всех завершённых тренировках пользователя.
+     * Рекорд — максимум по упражнению; его и дату считает StatsCalculator.personalRecords.
+     */
+    @Query(
+        """
+        SELECT we.exerciseId, e.name AS exerciseName, s.weightKg, w.startedAt
+        FROM sets s
+        INNER JOIN workout_exercises we ON s.workoutExerciseId = we.id
+        INNER JOIN workouts w ON we.workoutId = w.id
+        INNER JOIN exercises e ON we.exerciseId = e.id
+        WHERE w.userId = :userId AND w.finishedAt IS NOT NULL AND s.isCompleted = 1 AND s.weightKg > 0
+        """,
+    )
+    fun observeCompletedWeightedSets(userId: Long): Flow<List<CompletedSetRow>>
 }

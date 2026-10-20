@@ -168,19 +168,13 @@ private fun weekLabelText(label: WeekLabel, today: LocalDate): String = when (la
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun SwipeToDelete(onDelete: () -> Unit, content: @Composable () -> Unit) {
-    val state = rememberSwipeToDismissBoxState(
-        confirmValueChange = { value ->
-            if (value == SwipeToDismissBoxValue.EndToStart) {
-                onDelete()
-                true
-            } else {
-                false
-            }
-        },
-    )
+    val state = rememberSwipeToDismissBoxState()
     SwipeToDismissBox(
         state = state,
         enableDismissFromStartToEnd = false,
+        // Свайп вправо выключен, так что сюда приходит только EndToStart; проверка — на всякий случай.
+        // Карточка сразу скрывается из списка, а при «Отменить» возвращается с новым, несдвинутым состоянием.
+        onDismiss = { value -> if (value == SwipeToDismissBoxValue.EndToStart) onDelete() },
         backgroundContent = {
             Box(
                 modifier = Modifier

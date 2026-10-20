@@ -12,6 +12,7 @@ import java.util.Locale
 private val Russian = Locale.forLanguageTag("ru")
 private val HeaderFormat = DateTimeFormatter.ofPattern("EEEE, d MMMM", Russian)
 private val LongDateFormat = DateTimeFormatter.ofPattern("d MMMM yyyy", Russian)
+private val DayMonthFormat = DateTimeFormatter.ofPattern("d MMMM", Russian)
 private val WeekdayFormat = DateTimeFormatter.ofPattern("EE", Russian)
 private val TimeFormat = DateTimeFormatter.ofPattern("HH:mm", Russian)
 
@@ -24,6 +25,9 @@ fun shortDate(date: LocalDate): String {
 
 /** «Вторник, 20 октября» — шапка Главной. */
 fun headerDate(date: LocalDate): String = HeaderFormat.format(date).replaceFirstChar { it.titlecase(Russian) }
+
+/** «12 октября» — лучшая неделя и даты рекордов на Статистике. */
+fun dayMonth(date: LocalDate): String = DayMonthFormat.format(date)
 
 /** «3 августа 2026» — «С нами с …» в Профиле. */
 fun longDate(date: LocalDate): String = LongDateFormat.format(date)

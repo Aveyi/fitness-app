@@ -6,6 +6,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -252,21 +254,24 @@ private fun lastWorkoutText(workout: Workout, today: LocalDate): String {
 private fun ThisWeek(summary: StatsSummary) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         SectionTitle(stringResource(R.string.home_this_week))
-        Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+        Row(
+            modifier = Modifier.height(IntrinsicSize.Min),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
             StatTile(
                 value = summary.workoutCount.toString(),
                 label = pluralStringResource(R.plurals.stat_workouts_label, summary.workoutCount),
-                modifier = Modifier.weight(1f),
+                modifier = Modifier.weight(1f).fillMaxHeight(),
             )
             StatTile(
                 value = summary.exerciseCount.toString(),
                 label = pluralStringResource(R.plurals.stat_exercises_label, summary.exerciseCount),
-                modifier = Modifier.weight(1f),
+                modifier = Modifier.weight(1f).fillMaxHeight(),
             )
             StatTile(
                 value = durationText(summary.totalDuration.toMinutes()),
                 label = stringResource(R.string.home_time_in_gym),
-                modifier = Modifier.weight(1f),
+                modifier = Modifier.weight(1f).fillMaxHeight(),
             )
         }
     }

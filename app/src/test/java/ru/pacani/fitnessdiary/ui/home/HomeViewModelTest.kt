@@ -27,6 +27,7 @@ import ru.pacani.fitnessdiary.domain.model.Goal
 import ru.pacani.fitnessdiary.domain.model.User
 import ru.pacani.fitnessdiary.domain.model.Workout
 import ru.pacani.fitnessdiary.domain.model.WorkoutDetails
+import ru.pacani.fitnessdiary.domain.stats.PersonalRecord
 import ru.pacani.fitnessdiary.domain.stats.WorkoutStat
 import ru.pacani.fitnessdiary.ui.auth.FakeAuthRepository
 import ru.pacani.fitnessdiary.util.MainDispatcherRule
@@ -152,6 +153,8 @@ private class FakeStatsRepository : StatsRepository {
         requestedFrom = from
         return workouts.map { list -> list.filter { it.startedAt >= from } }
     }
+
+    override fun observePersonalRecords(userId: Long): Flow<List<PersonalRecord>> = error("not used")
 }
 
 /** Только то, что нужно Главной; остальные методы в этих тестах не вызываются. */

@@ -101,4 +101,70 @@ class StatsCalculatorTest {
         val instant = StatsCalculator.startOf(LocalDate.of(2026, 10, 19), zone)
         assertEquals(LocalDateTime.of(2026, 10, 19, 0, 0), LocalDateTime.ofInstant(instant, zone))
     }
+
+    @Test
+    fun periodWeeks_fixedPeriods() {
+        val current = LocalDate.of(2026, 10, 19)
+        assertEquals(4, StatsCalculator.periodWeeks(StatsPeriod.FOUR_WEEKS, current, LocalDate.of(2020, 1, 1)))
+        assertEquals(13, StatsCalculator.periodWeeks(StatsPeriod.THREE_MONTHS, current, null))
+    }
+
+    @Test
+    fun periodWeeks_allTime_fromFirstWorkoutWeek() {
+        val current = LocalDate.of(2026, 10, 19)
+        // Первая тренировка в среду 5 августа: её неделя — с 3 августа, до 19 октября 12 недель
+        assertEquals(12, StatsCalculator.periodWeeks(StatsPeriod.ALL_TIME, current, LocalDate.of(2026, 8, 5)))
+        // Первая тренировка на этой неделе: всё равно 4 недели, а не один столбец на весь график
+        assertEquals(4, StatsCalculator.periodWeeks(StatsPeriod.ALL_TIME, current, LocalDate.of(2026, 10, 20)))
+        // Тренировок нет
+        assertEquals(4, StatsCalculator.periodWeeks(StatsPeriod.ALL_TIME, current, null))
+    }
+
+    @Test
+    fun bestWeek_ignoresCurrentWeek_andPrefersLaterOnTie() {
+        val current = LocalDate.of(2026, 10, 19)
+        val weeks = listOf(
+            WeekCount(LocalDate.of(2026, 9, 28), 14),
+            WeekCount(LocalDate.of(2026, 10, 5), 9),
+            WeekCount(LocalDate.of(2026, 10, 12), 14), // та же сумма, но позже — она и лучшая
+            WeekCount(current, 20), // текущая неделя ещё идёт, не считается
+        )
+        assertEquals(LocalDate.of(2026, 10, 12), StatsCalculator.bestWeek(weeks, current)?.weekStart)
+    }
+
+    @Test
+    fun bestWeek_noneWhenEmpty() {
+        val current = LocalDate.of(2026, 10, 19)
+        assertEquals(null, StatsCalculator.bestWeek(listOf(WeekCount(LocalDate.of(2026, 10, 12), 0)), current))
+        assertEquals(null, StatsCalculator.bestWeek(emptyList(), current))
+    }
+
+    @Test
+    fun personalRecords_maxWeightFirstAchieved_newestFirst() {
+        fun set(id: Long, name: String, weight: Double, dateTime: String) =
+            CompletedSet(id, name, weight, LocalDateTime.parse(dateTime).atZone(zone).toInstant())
+
+        val records = StatsCalculator.personalRecords(
+            listOf(
+                set(1, "Жим лёжа", 80.0, "2026-10-05T18:00"),
+                set(1, "Жим лёжа", 85.0, "2026-10-12T18:00"), // рекорд впервые
+                set(1, "Жим лёжа", 85.0, "2026-10-19T18:00"), // повтор — не новый рекорд
+                set(2, "Присед", 110.0, "2026-10-15T18:00"),
+                set(2, "Присед", 100.0, "2026-10-19T18:00"),
+            ),
+        )
+
+        assertEquals(listOf(2L, 1L), records.map { it.exerciseId }) // присед поднят позже
+        assertEquals(110.0, records[0].weightKg, 0.0)
+        assertEquals(85.0, records[1].weightKg, 0.0)
+        assertEquals(
+            LocalDateTime.of(2026, 10, 12, 18, 0),
+            LocalDateTime.ofInstant(records[1].achievedAt, zone),
+        )
+    }
+
+    @Test
+    fun personalRecords_empty() {
+        assertEquals(emptyList<PersonalRecord>(), StatsCalculator.personalRecords(emptyList()))
+    }
 }

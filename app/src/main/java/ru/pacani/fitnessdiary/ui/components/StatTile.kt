@@ -22,7 +22,10 @@ import ru.pacani.fitnessdiary.ui.theme.Background
 import ru.pacani.fitnessdiary.ui.theme.CardShape
 import ru.pacani.fitnessdiary.ui.theme.FitnessDiaryTheme
 
-/** Плитка «число и подпись»: «Эта неделя» на Главной и карточки на Статистике. */
+/**
+ * Плитка «число и подпись»: «Эта неделя» на Главной и карточки на Статистике.
+ * В ряду плиток задайте ряду height(IntrinsicSize.Min), а плиткам fillMaxHeight(), чтобы они были одной высоты.
+ */
 @Composable
 fun StatTile(
     value: String,
@@ -46,11 +49,13 @@ fun StatTile(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
+            // Две строки: «упр. за тренировку» не влезает в одну, когда плиток три в ряд
             Text(
                 text = label,
                 fontSize = 13.sp,
+                lineHeight = 16.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 1,
+                maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
             )
         }
